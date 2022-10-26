@@ -1,12 +1,13 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { Col } from 'react-bootstrap';
 
 const CourseCard = ({course}) => {
     const navigate=useNavigate();
+    const location=useLocation();
     const DetailsBtnHandler=()=>{
-        navigate(`courses/${id}`);
+        navigate(`/courses/${id}`);
     }
     const cheakOutBtnHandler=()=>{
         navigate(`/checkout/${id}`);
@@ -24,10 +25,10 @@ const CourseCard = ({course}) => {
             <p className='mb-1 fs-4 fw-bold'>{price}</p>
             <p className='mb-1 '>Enrolled By -{enrolled} Students</p>
           </Card.Text>
-          <button onClick={DetailsBtnHandler} className='btn btn-outline-info'>
+          <button onClick={DetailsBtnHandler}  className='btn btn-outline-info'>
             details
           </button>
-          <button onClick={cheakOutBtnHandler}  className='btn btn-success fw-bold'>
+          <button onClick={cheakOutBtnHandler} state className='btn btn-success fw-bold'>
             CheckOut
           </button>
         </Card.Body>
