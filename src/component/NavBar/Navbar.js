@@ -9,14 +9,14 @@ const NavBar = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand><Link to='/' className='logoName' style={{}}>Edu World</Link></Navbar.Brand>
+        <Navbar.Brand><Link to='/' className='logoName'>Edu World</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav" style={{flexGrow:0}}>
           <Nav className="me-auto fw-bold">
-            <NavLink style={{textDecoration:"none",padding:'16px',fontSize:"18px"}}>Course</NavLink>
-            <NavLink style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >FAQ</NavLink>
-            <NavLink style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Blogs</NavLink>
-            <NavLink style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Theme</NavLink>
+            <NavLink to='/courses' style={{textDecoration:"none",padding:'16px',fontSize:"18px"}}>Course</NavLink>
+            <NavLink to='/faq'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >FAQ</NavLink>
+            <NavLink to='/blogs'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Blogs</NavLink>
+            <NavLink  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Theme</NavLink>
           </Nav>
           <Nav>
                 
