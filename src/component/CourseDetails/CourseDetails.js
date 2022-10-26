@@ -8,8 +8,8 @@ const CourseDetails = () => {
         navigate(`/checkout/${id}`);
     }
     return (
-        <div className="card mx-auto border-none vh-100">
-  <div className="row g-0 align-items-center justify-content-center h-100">
+        <div className="card mx-auto border-none" style={{minHeight:'100vh'}}>
+  <div className="row g-0 align-items-center justify-content-center mt-5 h-100">
     <div className="col-md-5">
       <img src={img} className="img-fluid rounded-start" alt="..."/>
     </div>
@@ -32,7 +32,7 @@ const CourseDetails = () => {
         <p className="card-text fs-4 mb-1  ">
             {price}
         </p>
-        <button onClick={cheakOutBtnHandler}  className='btn w-25 btn-outline-success fw-bold'>
+        <button onClick={cheakOutBtnHandler}  className='btn  btn-outline-success fw-bold'>
             CheckOut
           </button>
       </div>
