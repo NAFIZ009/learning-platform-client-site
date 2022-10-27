@@ -8,7 +8,7 @@ import ErrorPage from '../component/ErrorPage/ErrorPage';
 import FAQ from '../component/FAQ/FAQ';
 import Login from '../component/Login/Login';
 import Register from '../component/Register/Register';
-import Home from '../Home/Home';
+import Home from '../component/Home/Home';
 import Main from '../Layout/Main';
 
 const Route=createBrowserRouter([
