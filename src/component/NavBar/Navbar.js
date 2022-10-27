@@ -16,10 +16,10 @@ const NavBar = () => {
             <NavLink to='/courses' style={{textDecoration:"none",padding:'16px',fontSize:"18px"}}>Course</NavLink>
             <NavLink to='/faq'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >FAQ</NavLink>
             <NavLink to='/blogs'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Blogs</NavLink>
-            <NavLink  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Theme</NavLink>
           </Nav>
-          <Nav>
-                
+          <Nav className="fw-bold" >
+            <NavLink to='/login'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Log In</NavLink>
+            <NavLink to='/register'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Register</NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>

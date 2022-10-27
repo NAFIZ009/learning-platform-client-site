@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 const Footer = () => {
     return (
         <footer className="footer footer-center p-20 bg-base-200 text-base-content">
