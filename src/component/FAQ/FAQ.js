@@ -2,7 +2,7 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 const FAQ = () => {
     return (
-        <Accordion defaultActiveKey="0" className='w-50 mx-auto mt-5'>
+        <Accordion defaultActiveKey="0" style={{minHeight:'100vh'}} className='w-50 mx-auto my-5 '>
       <Accordion.Item eventKey="0">
         <Accordion.Header>What do EDUWORLD courses include?</Accordion.Header>
         <Accordion.Body>
