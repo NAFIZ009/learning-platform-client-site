@@ -11,7 +11,7 @@ const EmailVarif = () => {
         <div className="camera"></div> 
         <div className="display">
           <div className="artboard artboard-demo phone-1 px-3">
-              <p className='text-center fw-bold text-light'>Please Check Your mail And Verify Your Email Address</p>
+              <p className='text-center fw-bold text-light'>Do You Verify Your Email?</p>
               <p className='text-center fw-bold text-light'>If You Verfiy Your Email Then Go For LogIn</p>
             <Link className='btn btn-primary' onClick={()=>{
                 navigate('/login')
