@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from 'react-router-dom';
 import Blogs from '../component/Blogs/Blogs';
 import CheckOut from '../component/CheckOut/CheckOut';
@@ -11,7 +10,6 @@ import Register from '../component/Register/Register';
 import Home from '../component/Home/Home';
 import Main from '../Layout/Main';
 import PrivetRouter from '../component/PrivetRouter/PrivetRouter';
-import EmailVarif from '../component/EmailVarif/EmailVarif';
 
 const Route=createBrowserRouter([
     {
@@ -52,10 +50,6 @@ const Route=createBrowserRouter([
                 path:'/checkout/:id',
                 loader:({params})=>fetch(`https://eduworld-server.vercel.app/courses/${params.id}`),
                 element:<PrivetRouter><CheckOut/></PrivetRouter>
-            },
-            {
-                path:'/emailverification',
-                element:<EmailVarif/>
             },
             {
                 path:'*',

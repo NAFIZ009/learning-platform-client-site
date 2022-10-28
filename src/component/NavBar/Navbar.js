@@ -10,7 +10,7 @@ import './Navbar.css'
 const NavBar = () => {
   const {user,userLogOut}=useContext(Context);
   const [light,setLight]=useState(false);
-  console.log(user);
+  console.log(user)
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -25,13 +25,15 @@ const NavBar = () => {
           </Nav>
           <Nav className="fw-bold gap-3" >
             {
-              user&&user.uid&&user.emailVerified?<NavLink onClick={()=>{userLogOut()}}  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Log Out</NavLink>:<><NavLink to='/login'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Log In</NavLink>
-              <NavLink to='/register'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Register</NavLink></>
+              user&&user.uid?<NavLink onClick={()=>{userLogOut()}}  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Log Out</NavLink>:<NavLink to='/login'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Log In</NavLink>
+              
             }
             {
-              user&&user.emailVerified&&user.photoURL&&<><div className="avatar d-flex ps-3 align-items-center">
+              user&&<><div className="avatar d-flex ps-3 align-items-center">
               <div className="h-10 w-10 rounded-full">
-                <img src={user.photoURL} /> 
+              <button type="button" className="h-100 w-100" data-bs-toggle="tooltip" data-bs-placement="top" title={user.displayName}>
+              <img src={user.photoURL} alt=''/>
+              </button>
               </div>
             </div>
             </>

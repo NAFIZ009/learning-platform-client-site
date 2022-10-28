@@ -28,6 +28,7 @@ const CourseDetails = () => {
         <p className="card-text text-muted">
             {lang}
         </p>
+        
         <p className="card-text fs-4 mb-1  ">
             {price}
         </p>

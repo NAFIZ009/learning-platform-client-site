@@ -4,11 +4,12 @@ import Form from 'react-bootstrap/Form';
 import { useLocation,  useNavigate,Link } from 'react-router-dom';
 import {Context} from '../../Context/AuthContext';
 const Login = () => {
-    const {user,userWithGoogle,userLogin,setLocationFrom}=useContext(Context);
+    const {userWithGoogle,userLogin,setLocationFrom,githubLogin}=useContext(Context);
     const [info,setInfo]=useState('');
     const navigate=useNavigate();
     const location=useLocation();
     const from=location.state?.from?.pathname || '/';
+    setLocationFrom(from);
     //login function
     const login =e=>{
         e.preventDefault();
@@ -16,22 +17,13 @@ const Login = () => {
         const form=e.target;
         const mail=form.mail.value;
         const password = form.pass.value;
-        console.log(user)
         userLogin(mail,password)
         .then(()=>{
             setInfo('Login successful');
             form.reset();
-            if(user&&user.emailVerified){
-                console.log('verified');
-                navigate(from,{replace:true});
-                
-            }else{
-                console.log('not verified');
-                navigate('/emailverification');
-                setLocationFrom(from);
-            }
+            navigate(from,{replace:true})   
         })
-        .catch(err=>setInfo(err.message));
+        .catch(err=>setInfo('Please Give valid Email Address and Password'));
     }
     const googleLogin=()=>{
         userWithGoogle()
@@ -41,12 +33,18 @@ const Login = () => {
         })
         .catch(err=>setInfo(err.message));
     }
-
+    const github =()=>{
+        githubLogin()
+        .then(()=>{
+          navigate(from,{replace:true});
+        })
+        .catch(err=>setInfo(err.message));
+      }
 
 
     return (
         <Form className='w-50 mx-auto mt-5' style={{minHeight:'100vh'}} onSubmit={login}>
-        <h1 className='text-center mb-5'>Log In & Verify Your Email</h1>
+        <h1 className='text-center mb-5'>Log In </h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" name='mail' placeholder="Enter Email" />
@@ -65,6 +63,9 @@ const Login = () => {
         </Button> <br />
         <Button onClick={googleLogin} className='mt-2 bg-dark fw-bold border-0' variant="primary" type="submit">
             Google
+        </Button><br />
+        <Button onClick={github} className='mt-2 bg-dark fw-bold border-0' variant="primary" type="submit">
+            Github
         </Button>
         <p className='mt-2'><small>New Here? <Link to='/register'>Register Now</Link></small></p>
       </Form>
