@@ -21,12 +21,19 @@ const NavBar = () => {
             <NavLink to='/faq'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >FAQ</NavLink>
             <NavLink to='/blogs'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Blogs</NavLink>
           </Nav>
-          <Nav className="fw-bold" >
+          <Nav className="fw-bold gap-3" >
             {
-              user&&user.uid?<NavLink onClick={()=>{userLogOut()}}  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Log Out</NavLink>:<><NavLink to='/login'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Log In</NavLink>
+              user&&user.uid&&user.emailVerified?<NavLink onClick={()=>{userLogOut()}}  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Log Out</NavLink>:<><NavLink to='/login'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Log In</NavLink>
               <NavLink to='/register'  style={{textDecoration:"none",padding:'16px',fontSize:"18px"}} >Register</NavLink></>
             }
-            
+            {
+              user&&user.emailVerified&&user.photoURL&&<><div className="avatar d-flex align-items-center">
+              <div className="h-10 w-10  rounded-full">
+                <img src={user.photoURL} />
+              </div>
+            </div>
+            </>
+            }
           </Nav>
         </Navbar.Collapse>
       </Container>

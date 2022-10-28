@@ -1,5 +1,5 @@
 import React from 'react';
-import {  useLocation, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { Col } from 'react-bootstrap';
 

@@ -34,16 +34,16 @@ const AuthContext = ({children}) => {
     //Email Varification
     const emailVerification=()=>{
          sendEmailVerification(auth.currentUser)
-         .then((res)=>{
-            console.log(res.user);
+         .then(()=>{
          })
     };
     //tarck user
     useEffect(()=>{
+        console.log('hu')
         onAuthStateChanged(auth, (users) => {
             setUser(users);
         });
-    },[]);
+    },[auth]);
     //login user
     const userLogin = (email,password)=>{
         return signInWithEmailAndPassword(auth, email, password)

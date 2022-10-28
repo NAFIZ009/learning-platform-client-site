@@ -1,14 +1,13 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link,useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {Context} from '../../Context/AuthContext';
 const Register = () => {
     const [error,setError]=useState('');
     const [info,setInfo]=useState('');
+    const navigate=useNavigate();
     const {userWithEmailAndPassword,userWithGoogle,addingNameAndImage,emailVarification}=useContext(Context);
-    const location=useLocation();
-    const from=location.state?.from?.pathname || '/';
     //form submit button
     const createUser=e=>{
         e.preventDefault();
@@ -24,6 +23,7 @@ const Register = () => {
             addingNameAndImage(name,img)
             .then(()=>{
                 emailVarification();
+                navigate('/login');
             })
             .catch(err=>setError(err.message));
             setInfo('Registration Success');
@@ -64,7 +64,7 @@ const Register = () => {
         }
         
         <Button variant="primary" type="submit">
-            Verify With Mail
+            Register
         </Button> <br />
         <Button onClick={googleLogin} className='mt-2 bg-dark fw-bold border-0' variant="primary" type="submit">
              Google

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useLocation,  useNavigate,Link, Navigate } from 'react-router-dom';
+import { useLocation,  useNavigate,Link } from 'react-router-dom';
 import {Context} from '../../Context/AuthContext';
 const Login = () => {
     const {user,userWithGoogle,userLogin,setLocationFrom}=useContext(Context);
@@ -16,13 +16,17 @@ const Login = () => {
         const form=e.target;
         const mail=form.mail.value;
         const password = form.pass.value;
+        console.log(user)
         userLogin(mail,password)
         .then(()=>{
             setInfo('Login successful');
             form.reset();
             if(user&&user.emailVerified){
-                navigate(from,{replace:true})
+                console.log('verified');
+                navigate(from,{replace:true});
+                
             }else{
+                console.log('not verified');
                 navigate('/emailverification');
                 setLocationFrom(from);
             }
@@ -42,6 +46,7 @@ const Login = () => {
 
     return (
         <Form className='w-50 mx-auto mt-5' style={{minHeight:'100vh'}} onSubmit={login}>
+        <h1 className='text-center mb-5'>Log In & Verify Your Email</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" name='mail' placeholder="Enter Email" />
