@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { createContext } from 'react';
 import app from '../firebase.config';
-import { getAuth, createUserWithEmailAndPassword, updateProfile, sendEmailVerification,signInWithPopup,onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, sendEmailVerification,signInWithPopup,onAuthStateChanged,signInWithEmailAndPassword,signOut } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
 
@@ -12,6 +12,8 @@ const Context=createContext();
 const AuthContext = ({children}) => {
     //user tracking state
     const [user,setUser]=useState(null);
+    //location tracking state
+    const [locationFrom,setLocationFrom]=useState({});
     //auth
     const auth=getAuth(app);
     //creating User With Email And Password
@@ -30,9 +32,11 @@ const AuthContext = ({children}) => {
           });
     };
     //Email Varification
-    const emailVarification=()=>{
+    const emailVerification=()=>{
          sendEmailVerification(auth.currentUser)
-         .then(()=>{})
+         .then((res)=>{
+            console.log(res.user);
+         })
     };
     //tarck user
     useEffect(()=>{
@@ -40,8 +44,20 @@ const AuthContext = ({children}) => {
             setUser(users);
         });
     },[]);
+    //login user
+    const userLogin = (email,password)=>{
+        return signInWithEmailAndPassword(auth, email, password)
+    };
+    //logout user
+    const userLogOut = ()=>{
+        signOut(auth).then(() => {
+            
+          }).catch((error) => {
+            
+          });
+    };
     //Context Value
-    const contextValue={userWithEmailAndPassword,userWithGoogle,addingNameAndImage,emailVarification,user};
+    const contextValue={userWithEmailAndPassword,userWithGoogle,addingNameAndImage,emailVarification: emailVerification,user,userLogin,userLogOut,locationFrom,setLocationFrom};
     return (
         <Context.Provider value={contextValue}>
             {children}

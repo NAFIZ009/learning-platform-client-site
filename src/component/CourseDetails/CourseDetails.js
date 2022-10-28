@@ -1,6 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLoaderData } from 'react-router-dom';
 const CourseDetails = () => {
     const {id,name,author,ratings,price,img,duration,discription,lang}=useLoaderData();
     const navigate=useNavigate();
@@ -32,8 +31,8 @@ const CourseDetails = () => {
         <p className="card-text fs-4 mb-1  ">
             {price}
         </p>
-        <button onClick={cheakOutBtnHandler}  className='btn  btn-outline-success fw-bold'>
-            CheckOut
+        <button onClick={cheakOutBtnHandler}  className='btn  btn-outline-success py-2 fw-bold'>
+            Get Premium Access
           </button>
       </div>
     </div>

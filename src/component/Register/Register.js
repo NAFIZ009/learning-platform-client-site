@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import {Context} from '../../Context/AuthContext';
 const Register = () => {
     const [error,setError]=useState('');
     const [info,setInfo]=useState('');
     const {userWithEmailAndPassword,userWithGoogle,addingNameAndImage,emailVarification}=useContext(Context);
+    const location=useLocation();
+    const from=location.state?.from?.pathname || '/';
     //form submit button
     const createUser=e=>{
         e.preventDefault();
@@ -22,18 +24,18 @@ const Register = () => {
             addingNameAndImage(name,img)
             .then(()=>{
                 emailVarification();
-                
             })
-            .catch(err=>setError(err.massage));
+            .catch(err=>setError(err.message));
+            setInfo('Registration Success');
             form.reset();
         })
-        .catch(err=>setError(err.massage));
+        .catch(err=>setError(err.message));
     }
     //google login
     const googleLogin =()=>{
         userWithGoogle()
         .then(()=>{})
-        .catch(err=>setError(err.massage));
+        .catch(err=>setError(err.message));
     }
     return (
         <Form className='w-50 mx-auto mt-5' style={{minHeight:'100vh'}} onSubmit={createUser}>
@@ -55,17 +57,17 @@ const Register = () => {
           <Form.Control type="password" name='pass' placeholder="Password" />
         </Form.Group>
         {
-            error&&<div className="text-danger">{error}</div>
+            error&&<div className="text-danger my-3 ">{error}</div>
         }
         {
-            info&&<div className="text-success">{info}</div>
+            info&&<div className="text-success my-3">{info}</div>
         }
         
         <Button variant="primary" type="submit">
             Verify With Mail
         </Button> <br />
         <Button onClick={googleLogin} className='mt-2 bg-dark fw-bold border-0' variant="primary" type="submit">
-            Register With Google
+             Google
         </Button>
         <p className='mt-2'><small>Already Registered? <Link to='/login'>Login Now</Link></small></p>
       </Form>
